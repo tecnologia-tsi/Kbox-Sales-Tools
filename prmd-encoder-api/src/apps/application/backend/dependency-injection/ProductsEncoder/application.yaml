@@ -1,0 +1,20 @@
+services:
+  Mooc.productsEncoder.ProductEncoderCreator:
+    class: ../../../../../Contexts/Application/ProductsEncoder/application/Creator/ProductEncoderCreator
+    arguments: [""]
+
+  Mooc.productsEncoder.ProductEncoderQueryHandler:
+    class: ../../../../../Contexts/Application/ProductsEncoder/application/Creator/CreateProductEncoderQueryHandler
+    arguments: ["@Mooc.productsEncoder.ProductEncoderCreator"]
+    tags:
+      - { name: 'queryHandler' }
+
+  Mooc.productsEncoder.ProductEncoderValidator:
+    class: ../../../../../Contexts/Application/ProductsEncoder/application/Validator/ProductEncoderValidator
+    arguments: [""]
+
+  Mooc.productsEncoder.ValidateProductEncoderQueryHandler:
+    class: ../../../../../Contexts/Application/ProductsEncoder/application/Validator/ValidateProductEncoderQueryHandler
+    arguments: ["@Mooc.productsEncoder.ProductEncoderValidator"]
+    tags:
+      - { name: 'queryHandler' }

@@ -1,0 +1,45 @@
+services:
+
+  Apps.mooc.controllers.StatusGetController:
+    class: ../../controllers/StatusGetController
+    arguments: []
+
+  Apps.mooc.controllers.BrandEncoderPutController:
+    class: ../../controllers/BrandsEncoder/BrandEncoderPutController
+    arguments: ["@Shared.QueryBus"]
+
+  Apps.mooc.controllers.BrandEncoderGetController:
+    class: ../../controllers/BrandsEncoder/BrandEncoderGetController
+    arguments: [ "@Shared.QueryBus" ]
+
+  Apps.mooc.controllers.CustomerEncoderPutController:
+    class: ../../controllers/CustomersEncoder/CustomerEncoderPutController
+    arguments: [ "@Shared.QueryBus" ]
+
+  Apps.mooc.controllers.CustomerEncoderGetController:
+    class: ../../controllers/CustomersEncoder/CustomerEncoderGetController
+    arguments: [ "@Shared.QueryBus" ]
+
+  Apps.mooc.controllers.ProductEncoderPutController:
+    class: ../../controllers/ProductsEncoder/ProductEncoderPutController
+    arguments: [ "@Shared.QueryBus" ]
+
+  Apps.mooc.controllers.ProductEncoderGetController:
+    class: ../../controllers/ProductsEncoder/ProductEncoderGetController
+    arguments: [ "@Shared.QueryBus" ]
+
+  Apps.mooc.controllers.SellerEncoderPutController:
+    class: ../../controllers/SellersEncoder/SellerEncoderPutController
+    arguments: [ "@Shared.QueryBus" ]
+
+  Apps.mooc.controllers.SellerEncoderGetController:
+    class: ../../controllers/SellersEncoder/SellerEncoderGetController
+    arguments: [ "@Shared.QueryBus" ]
+
+  Apps.mooc.controllers.SupplierEncoderPutController:
+    class: ../../controllers/SuppliersEncoder/SupplierEncoderPutController
+    arguments: [ "@Shared.QueryBus" ]
+
+  Apps.mooc.controllers.SupplierEncoderGetController:
+    class: ../../controllers/SuppliersEncoder/SupplierEncoderGetController
+    arguments: [ "@Shared.QueryBus" ]

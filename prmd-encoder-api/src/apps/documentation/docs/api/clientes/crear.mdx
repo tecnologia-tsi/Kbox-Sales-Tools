@@ -1,0 +1,116 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Creador
+
+## Introducción
+Método api rest para crear de códigos de **clientes**.
+
+### Ejemplo de código
+ALFA3 país + código de tipología de cliente + código tamaño cliente + secuencial
+`customerCode:` `PAN-120-2-C123456`
+
+### Ruta
+Para crear un código hay que hacer una petición ```PUT``` **a la siguiente ruta**.
+```/customers-encoder```
+
+<br /><br />
+
+## Contenido de la petición
+Para que la petición funcione hay que pasarle por el body los siguientes **parametros en formato JSON**.
+
+```json
+{
+    "name": "Clinica Example S.L",
+    "isGroup": false,
+    "typeOfTaxIdentifier": "NIT",
+    "taxIdentifier": "B76365789",
+    "country": "spain",
+    "typology": 140,
+    "size": 2
+}
+```
+
+### Explicación de paramatros
+
+Selecciona una opción para ver los detalles de cada parémetros. (Los campos con * son requeridos)
+
+<Tabs
+defaultValue="name"
+values={[
+{label: 'name *', value: 'name'},
+{label: 'isGroup *', value: 'isGroup'},
+{label: 'typeOfTaxIdentifier *', value: 'typeOfTaxIdentifier'},
+{label: 'taxIdentifier *', value: 'taxIdentifier'},
+{label: 'country *', value: 'country'},
+{label: 'typology', value: 'typology'},
+{label: 'size', value: 'size'},
+]}>
+<TabItem value="name">
+Nombre de la empresa que se quiere generar el código. Valor de tipo <b>string</b>
+</TabItem>
+<TabItem value="isGroup">
+Opción para determinar si la empresa pertenece a un grupo de clientes. Valor de tipo **boolean**
+</TabItem>
+<TabItem value="typeOfTaxIdentifier">
+Tipo de identificador fiscal del cliente, si es NIT, RUC etc...Valor de tipo **string**
+</TabItem>
+<TabItem value="taxIdentifier">
+Número de identificación fiscal del cliente. Valor de tipo **string**
+</TabItem>
+<TabItem value="country">
+País de origen del cliente. Valor de tipo <b>string</b>. Formato completo ISO 3166-1. La Api lo transformara en Alfa3
+</TabItem>
+<TabItem value="typology">
+<div>
+  Tipología del cliente.<br /><br />
+  Datos que pueden venir:<br />
+  <b>110</b> - Organismo Público Salud<br />
+  <b>120</b> - Organismo Público NO Salud<br />
+  <b>130</b> - Hospital Público<br />
+  <b>140</b> - Laboratorio Público<br />
+  <b>210</b> - Empresa Privada Salud<br />
+  <b>220</b> - Empresa Privada NO Salud<br />
+  <b>230</b> - Hospital Privado<br />
+  <b>240</b> - Laboratorio Privado<br />
+<b>250</b> - Consulta Médica Privada<br />
+</div>
+</TabItem>
+<TabItem value="size">
+<div>
+Es el tamaño del cliente. Valor <b>Numerico</b> <br />
+<b>1</b> - Hosp. Pequeño comarcal Menos de 150 camas<br />
+<b>2</b> - Hosp. General básico Menos de 200 camas<br />
+<b>3</b> - Hosp. de Área 500 camas<br />
+<b>4</b> - Gran Hospital 160 MIR / 4 servicios complejos<br />
+<b>5</b> - Hosp. Gran Peso Mas de 680 médicos / 300 MIR / servicios completos<br />
+</div>
+</TabItem>
+</Tabs>
+
+<br /><br />
+
+## Respuesta
+
+### Ejemplo de respuesta correcta
+La respuesta sera devuelta con un código `200`
+```json
+{
+    "id": "3e71220c-b931-4509-8a25-519f949f3e06",
+    "customerCode": "PAN-120-2-C123456"
+}
+```
+`id:` Identificador de la codificación
+
+`customerCode:` Código del cliente
+
+
+### Ejemplo de respuesta incorrecta
+
+La respuesta sera devuelta con un código `400`
+```json
+{
+    "message": "Mensaje de error"
+}
+```
+`message:` Mensaje de error

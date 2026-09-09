@@ -1,0 +1,20 @@
+services:
+  Mooc.sellerEncoder.SellerEncoderCreator:
+    class: ../../../../../Contexts/Application/SellersEncoder/application/Creator/SellerEncoderCreator
+    arguments: [""]
+
+  Mooc.sellerEncoder.SellerEncoderQueryHandler:
+    class: ../../../../../Contexts/Application/SellersEncoder/application/Creator/CreateSellerEncoderQueryHandler
+    arguments: ["@Mooc.sellerEncoder.SellerEncoderCreator"]
+    tags:
+      - { name: 'queryHandler' }
+
+  Mooc.sellerEncoder.SellerEncoderValidator:
+    class: ../../../../../Contexts/Application/SellersEncoder/application/Validator/SellerEncoderValidator
+    arguments: [""]
+
+  Mooc.sellerEncoder.ValidateSellerEncoderQueryHandler:
+    class: ../../../../../Contexts/Application/SellersEncoder/application/Validator/ValidateSellerEncoderQueryHandler
+    arguments: ["@Mooc.sellerEncoder.SellerEncoderValidator"]
+    tags:
+      - { name: 'queryHandler' }

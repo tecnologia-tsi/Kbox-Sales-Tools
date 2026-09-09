@@ -1,0 +1,11 @@
+node_modules/
+.vscode
+.idea
+dist/
+.tmp
+logs/
+src/Contexts/Mooc/Courses/infrastructure/persistence/courses.*
+data
+test-results.xml
+.env
+.__pycache__

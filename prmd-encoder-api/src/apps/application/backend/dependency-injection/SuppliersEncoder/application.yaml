@@ -1,0 +1,20 @@
+services:
+  Mooc.supplierEncoder.SupplierEncoderCreator:
+    class: ../../../../../Contexts/Application/SuppliersEncoder/application/Creator/SupplierEncoderCreator
+    arguments: [""]
+
+  Mooc.supplierEncoder.SupplierEncoderQueryHandler:
+    class: ../../../../../Contexts/Application/SuppliersEncoder/application/Creator/CreateSupplierEncoderQueryHandler
+    arguments: ["@Mooc.supplierEncoder.SupplierEncoderCreator"]
+    tags:
+      - { name: 'queryHandler' }
+
+  Mooc.supplierEncoder.SupplierEncoderValidator:
+    class: ../../../../../Contexts/Application/SuppliersEncoder/application/Validator/SupplierEncoderValidator
+    arguments: [""]
+
+  Mooc.supplierEncoder.ValidateSupplierEncoderQueryHandler:
+    class: ../../../../../Contexts/Application/SuppliersEncoder/application/Validator/ValidateSupplierEncoderQueryHandler
+    arguments: ["@Mooc.supplierEncoder.SupplierEncoderValidator"]
+    tags:
+      - { name: 'queryHandler' }

@@ -1,0 +1,111 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Creador
+
+## Introducción
+Método api rest para crear de códigos de **proveedores**.
+
+### Ejemplo de código
+ALFA3 país + código de tipología del proveedor + código tamaño supplier + secuencial
+
+`customerCode:` `PAN-120-2-P123456`
+
+### Ruta
+Para crear un código hay que hacer una petición ```PUT``` **a la siguiente ruta**.
+```/suppliers-encoder```
+
+<br /><br />
+
+## Contenido de la petición
+Para que la petición funcione hay que pasarle por el body los siguientes **parametros en formato JSON**.
+
+```json
+{
+    "name": "Clinica Example S.L",
+    "isGroup": false,
+    "typeOfTaxIdentifier": "NIT",
+    "taxIdentifier": "B76365789",
+    "country": "panama",
+    "typology": 120,
+    "ambit": 2
+}
+```
+
+### Explicación de paramatros
+
+Selecciona una opción para ver los detalles de cada parémetros. (Los campos con * son requeridos)
+
+<Tabs
+defaultValue="name"
+values={[
+{label: 'name *', value: 'name'},
+{label: 'isGroup *', value: 'isGroup'},
+{label: 'typeOfTaxIdentifier *', value: 'typeOfTaxIdentifier'},
+{label: 'taxIdentifier *', value: 'taxIdentifier'},
+{label: 'country *', value: 'country'},
+{label: 'typology', value: 'typology'},
+{label: 'ambito', value: 'ambito'},
+]}>
+<TabItem value="name">
+Nombre de la empresa que se quiere generar el código. Valor de tipo <b>string</b>
+</TabItem>
+<TabItem value="isGroup">
+Opción para determinar si la empresa pertenece a un grupo de suppliers. Valor de tipo **boolean**
+</TabItem>
+<TabItem value="typeOfTaxIdentifier">
+Tipo de identificador fiscal del supplier, si es NIT, RUC etc...Valor de tipo **string**
+</TabItem>
+<TabItem value="taxIdentifier">
+Número de identificación fiscal del supplier. Valor de tipo **string**
+</TabItem>
+<TabItem value="country">
+País de origen del supplier. Valor de tipo <b>string</b>. Formato completo ISO 3166-1. La Api lo transformara en Alfa3
+</TabItem>
+<TabItem value="typology">
+<div>
+  Tipología del proveedor.<br /><br />
+  Datos que pueden venir:<br />
+    <b>110</b> - Organismo Público Salud<br />
+    <b>120</b> Organismo Público No Salud<br />
+    <b>210</b> Entidad Privada Salud<br />
+    <b>220</b> Entidad Privada No Salud<br />
+<b>250</b> - Consulta Médica Privada<br />
+</div>
+</TabItem>
+<TabItem value="ambito">
+<div>
+Es el ámbito del proveedor. Valor <b>Numerico</b> <br />
+Datos que pueden venir:<br />
+    <b>1</b> - Nacional<br />
+    <b>2</b> Internacional<br />
+</div>
+</TabItem>
+</Tabs>
+
+<br /><br />
+
+## Respuesta
+
+### Ejemplo de respuesta correcta
+La respuesta sera devuelta con un código `200`
+```json
+{
+    "id": "3e71220c-b931-4509-8a25-519f949f3e01",
+    "suplierCode": "PAN-120-2-P123456"
+}
+```
+`id:` Identificador de la codificación
+
+`customerCode:` Código del proveedor
+
+
+### Ejemplo de respuesta incorrecta
+
+La respuesta sera devuelta con un código `400`
+```json
+{
+    "message": "Mensaje de error"
+}
+```
+`message:` Mensaje de error

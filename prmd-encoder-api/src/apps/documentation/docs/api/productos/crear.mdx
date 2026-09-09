@@ -1,0 +1,108 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Creador
+
+## Introducción
+Método api rest para crear de códigos de **productos**.
+
+### Ejemplo de código
+Tipo de articulo + código de clase+categoría de producto + N secuencial del proveedor + alias de marca + código articulo del proveedor
+`productCode:` `PRO-CACB-M1408-123445`
+
+### Ruta
+Para crear un código hay que hacer una petición ```PUT``` **a la siguiente ruta**.
+```/products-encoder```
+
+<br /><br />
+
+## Contenido de la petición
+Para que la petición funcione hay que pasarle por el body los siguientes **parametros en formato JSON**.
+
+```json
+{
+    "name": "Mantenimiento de maquinaria",
+    "type": "producto",
+    "group": "CA",
+    "category": "CB",
+    "brandCode": "M1408",
+    "productSupplierCode": "123445"
+}
+```
+
+### Explicación de paramatros
+
+Selecciona una opción para ver los detalles de cada parémetros. (Los campos con * son requeridos)
+
+<Tabs
+defaultValue="name"
+values={[
+{label: 'name *', value: 'name'},
+{label: 'type ', value: 'type'},
+{label: 'group ', value: 'group'},
+{label: 'category ', value: 'category'},
+{label: 'brandCode *', value: 'brandCode'},
+{label: 'productSupplierCode *', value: 'productSupplierCode'},
+]}>
+<TabItem value="name">
+Nombre del producto que se quiere generar el código. Valor de tipo <b>string</b>
+</TabItem>
+<TabItem value="type">
+<div>
+  Tipología del producto. Valor tipo string <br /><br />
+  Datos que pueden venir:<br />
+  <b>producto</b><br />
+  <b>servicio</b><br />
+  <b>licencia</b><br />
+  <b>kit propio</b><br />
+  <b>producto de valor agregado</b><br />
+</div>
+</TabItem>
+<TabItem value="group">
+<div>
+Grupo de producto <br />
+A especificar por Promed. Pendiente. <br />
+Valor tipo <b>String</b>
+</div>
+</TabItem>
+<TabItem value="category">
+<div>
+Categoría de producto <br />
+A especificar por Promed. Pendiente. <br />
+Valor tipo <b>String*</b>
+</div>
+</TabItem>
+<TabItem value="brandCode">
+    No Secuencial de la marca. Valor tipo <b>String</b>
+</TabItem>
+<TabItem value="productSupplierCode">
+Número de artículo del proveedor. valor tipo <b>String</b>
+</TabItem>
+</Tabs>
+
+<br /><br />
+
+## Respuesta
+
+### Ejemplo de respuesta correcta
+La respuesta sera devuelta con un código `200`
+```json
+{
+    "id": "3e71220c-b931-4509-8a25-519f949f3e06",
+    "productCode": "PRO-CACB-M1408-123445"
+}
+```
+`id:` Identificador de la codificación
+
+`productCode:` Código del producto
+
+
+### Ejemplo de respuesta incorrecta
+
+La respuesta sera devuelta con un código `400`
+```json
+{
+    "message": "Mensaje de error"
+}
+```
+`message:` Mensaje de error

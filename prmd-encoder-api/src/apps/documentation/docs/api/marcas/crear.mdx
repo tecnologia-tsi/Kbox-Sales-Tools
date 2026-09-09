@@ -1,0 +1,77 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Creador
+
+## Introducción
+Método api rest para crear de códigos de **marcas**.
+
+### Ejemplo de código
+Codigo Secuencial del Proveedor + Código secuencial de marca + Alias Marca
+
+`brandCode:` `M1234-CEAP`
+
+### Ruta
+Para crear un código hay que hacer una petición ```PUT``` **a la siguiente ruta**.
+```/brands-encoder```
+
+<br /><br />
+
+## Contenido de la petición
+Para que la petición funcione hay que pasarle por el body los siguientes **parametros en formato JSON**.
+
+```json
+{
+    "name": "KBOX Sales Tools",
+}
+```
+
+### Explicación de paramatros
+
+Selecciona una opción para ver los detalles de cada parémetros. (Los campos con * son requeridos)
+
+<Tabs
+defaultValue="name"
+values={[
+{label: 'name *', value: 'name'},
+]}>
+<TabItem value="name">
+Nombre de la marca que se quiere generar el código. Valor de tipo <b>string</b>
+</TabItem>
+<TabItem value="isGroup">
+Opción para determinar si la empresa pertenece a un grupo de marcas. Valor de tipo <b>boolean</b>
+</TabItem>
+<TabItem value="typeOfTaxIdentifier">
+Tipo de identificador fiscal del marca, si es NIT, RUC etc...Valor de tipo <b>string</b>
+</TabItem>
+<TabItem value="taxIdentifier">
+Número de identificación fiscal del marca. Valor de tipo <b>string</b>
+</TabItem>
+</Tabs>
+
+<br /><br />
+
+## Respuesta
+
+### Ejemplo de respuesta correcta
+La respuesta sera devuelta con un código `200`
+```json
+{
+    "id": "3e71220c-b931-4509-8a25-519f949f3e06",
+    "brandCode": "M1234-CEAP"
+}
+```
+`id:` Identificador de la codificación
+
+`customerCode:` Código del marca
+
+
+### Ejemplo de respuesta incorrecta
+
+La respuesta sera devuelta con un código `400`
+```json
+{
+    "message": "Mensaje de error"
+}
+```
+`message:` Mensaje de error

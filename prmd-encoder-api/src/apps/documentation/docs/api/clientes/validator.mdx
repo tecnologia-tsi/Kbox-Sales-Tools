@@ -1,0 +1,32 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Validador
+
+## Introducción
+Método api rest para validar códigos de **clientes**.
+
+### Ruta
+Para crear un código hay que hacer una petición ```GET``` **a la siguiente ruta**.
+```/customers-validator```
+
+<br /><br />
+
+## Contenido de la petición
+Para que la petición funcione hay que pasarle por el body los siguientes **parametros en formato JSON**.
+
+```json
+{
+    "name": "Clinica Example S.L",
+    "isGroup": false,
+    "typeOfTaxIdentifier": "NIT",
+    "taxIdentifier": "B76365789",
+    "country": "spain",
+    "typology": 140,
+    "size": 2
+}
+```
+
+### Explicación de paramatros
+
+Los parametros son los mismos que en la petición de crear un código.

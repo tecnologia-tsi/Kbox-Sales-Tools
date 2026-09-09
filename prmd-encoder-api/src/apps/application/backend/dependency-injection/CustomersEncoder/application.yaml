@@ -1,0 +1,20 @@
+services:
+  Mooc.customerEncoder.CustomerEncoderCreator:
+    class: ../../../../../Contexts/Application/CustomersEncoder/application/Creator/CustomerEncoderCreator
+    arguments: [""]
+
+  Mooc.customerEncoder.CustomerEncoderQueryHandler:
+    class: ../../../../../Contexts/Application/CustomersEncoder/application/Creator/CreateCustomerEncoderQueryHandler
+    arguments: ["@Mooc.customerEncoder.CustomerEncoderCreator"]
+    tags:
+      - { name: 'queryHandler' }
+
+  Mooc.customerEncoder.CustomerEncoderValidator:
+    class: ../../../../../Contexts/Application/CustomersEncoder/application/Validator/CustomerEncoderValidator
+    arguments: [""]
+
+  Mooc.customerEncoder.ValidateCustomerEncoderQueryHandler:
+    class: ../../../../../Contexts/Application/CustomersEncoder/application/Validator/ValidateCustomerEncoderQueryHandler
+    arguments: ["@Mooc.customerEncoder.CustomerEncoderValidator"]
+    tags:
+      - { name: 'queryHandler' }

@@ -1,0 +1,93 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Creador
+
+## Introducción
+Método api rest para crear de códigos de **vendedores**.
+
+### Ejemplo de código
+ALFA3 país + código de tipología de vendedor + código secuncial vendedor
+
+`customerCode:` `PAN-140-V1244`
+
+### Ruta
+Para crear un código hay que hacer una petición ```PUT``` **a la siguiente ruta**.
+```/sellers-encoder```
+
+<br /><br />
+
+## Contenido de la petición
+Para que la petición funcione hay que pasarle por el body los siguientes **parametros en formato JSON**.
+
+```json
+{
+    "name": "Aitor Tilla",
+    "typeOfTaxIdentifier": "NIF",
+    "taxIdentifier": "B76365789",
+    "country": "panama",
+    "typology": 100
+}
+```
+
+### Explicación de paramatros
+
+Selecciona una opción para ver los detalles de cada parémetros. (Los campos con * son requeridos)
+
+<Tabs
+defaultValue="name"
+values={[
+{label: 'name *', value: 'name'},
+{label: 'typeOfTaxIdentifier *', value: 'typeOfTaxIdentifier'},
+{label: 'taxIdentifier *', value: 'taxIdentifier'},
+{label: 'country *', value: 'country'},
+{label: 'typology', value: 'typology'},
+]}>
+<TabItem value="name">
+Nombre del vendedor se quiere generar el código. Valor de tipo <b>string</b>
+</TabItem>
+<TabItem value="typeOfTaxIdentifier">
+Tipo de identificador fiscal del vendedor, si es NIT, RUC etc...Valor de tipo <b>string</b>
+</TabItem>
+<TabItem value="taxIdentifier">
+Número de identificación fiscal del vendedor. Valor de tipo <b>string</b>
+</TabItem>
+<TabItem value="country">
+País del vendedor. Valor de tipo <b>string</b>. Formato completo ISO 3166-1. La Api lo transformara en Alfa3
+</TabItem>
+<TabItem value="typology">
+<div>
+  Tipología del vendedor.<br /><br />
+  Datos que pueden venir:<br />
+ <b>100: Gerente</b><br />
+  <b>200: Comercial</b>
+</div>
+</TabItem>
+</Tabs>
+
+<br /><br />
+
+## Respuesta
+
+### Ejemplo de respuesta correcta
+La respuesta sera devuelta con un código `200`
+```json
+{
+    "encoderId": "3745be6d-0220-4732-862b-45202334450c",
+    "sellerCode": "PAN-140-V1244"
+}
+```
+`id:` Identificador de la codificación
+
+`customerCode:` Código del vendedor
+
+
+### Ejemplo de respuesta incorrecta
+
+La respuesta sera devuelta con un código `400`
+```json
+{
+    "message": "Mensaje de error"
+}
+```
+`message:` Mensaje de error

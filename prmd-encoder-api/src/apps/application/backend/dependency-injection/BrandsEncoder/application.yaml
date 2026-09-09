@@ -1,0 +1,20 @@
+services:
+  Mooc.brandEncoder.BrandEncoderCreator:
+    class: ../../../../../Contexts/Application/BrandsEncoder/application/creator/BrandEncoderCreator
+    arguments: [""]
+
+  Mooc.brandEncoder.BrandEncoderQueryHandler:
+    class: ../../../../../Contexts/Application/BrandsEncoder/application/creator/CreateBrandEncoderQueryHandler
+    arguments: ["@Mooc.brandEncoder.BrandEncoderCreator"]
+    tags:
+      - { name: 'queryHandler' }
+
+  Mooc.brandEncoder.BrandEncoderValidator:
+    class: ../../../../../Contexts/Application/BrandsEncoder/application/Validator/BrandEncoderValidator
+    arguments: [""]
+
+  Mooc.brandEncoder.ValidateBrandEncoderQueryHandler:
+    class: ../../../../../Contexts/Application/BrandsEncoder/application/Validator/ValidateBrandEncoderQueryHandler
+    arguments: ["@Mooc.brandEncoder.BrandEncoderValidator"]
+    tags:
+      - { name: 'queryHandler' }
